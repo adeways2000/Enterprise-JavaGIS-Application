@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: -gis-app
+  datasource:
+    url: jdbc:postgresql://localhost:5432/_gis_db
+    username: _gis
+    password: secure_password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# Security configuration
+security:
+  jwt:
+    secret: _gis_application_jwt_secret_key_for_token_generation_and_validation
+    expiration: 86400000 # 24 hours in milliseconds
+
+# GeoTools configuration
+geotools:
+  shapefile:
+    upload-dir: ./uploads/shapefiles
+  satellite:
+    upload-dir: ./uploads/satellite
+
+# STAC configuration
+stac:
+  catalog:
+    title: BASF GmbH Spatio-Temporal Asset Catalog
+    description: Catalog for environmental monitoring and agricultural assets
+    version: 1.0.0
+    id: basf-stac
+  collections:
+    - id: environmental-monitoring
+      title: Environmental Monitoring Assets
+      description: Collection of environmental monitoring data including air quality, water quality, and noise pollution
+    - id: agricultural-assets
+      title: Agricultural Assets
+      description: Collection of agricultural data including field boundaries, crop health, and spray recommendations
+
+# Logging configuration
+logging:
+  level:
+    root: INFO
+    com.basf.gis: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+# Springdoc OpenAPI configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+  packages-to-scan: com.basf.gis.controller

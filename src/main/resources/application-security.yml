@@ -1,0 +1,2 @@
+javagis.app.jwtSecret=javaGisSecretKey
+javagis.app.jwtExpirationMs=86400000
