@@ -39,7 +39,7 @@ CREATE USER javagis WITH PASSWORD 'secure_password';
 CREATE DATABASE javagis_db;
 
 # Grant privileges to the user
-GRANT ALL PRIVILEGES ON DATABASE javagis_db TO basf_gis;
+GRANT ALL PRIVILEGES ON DATABASE javagis_db TO javagis;
 
 # Connect to the database
 \c basf_gis_db
