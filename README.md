@@ -3,7 +3,7 @@ Professional Enterprise JavaGIS SpringBoot application with PostgreSQL integrati
 
 # Development Environment Setup for Enterprise JavaGIS Application
 
-This document outlines the steps to set up the development environment for the Enterprise JavaGIS application for BASF GmbH.
+This document outlines the steps to set up the development environment for the Enterprise JavaGIS application.
 
 ## 1. Install and Configure PostgreSQL with PostGIS Extension
 
